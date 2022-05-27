@@ -47,6 +47,20 @@
                             aria-hidden="true"></i>info@yourmail.com</a>
                 </div>
                 <script>
+                    sm.getApi({version: 'v1'}).then(function(glia) {
+
+                        function addClickListener(engagement) {
+                            var submit = document.querySelector('#login_btn');
+
+                            submit.addEventListener('click', function() {
+                                engagement.recordEvent({message: 'Visitor tried to login'});
+                            });
+                        }
+
+                        glia.addEventListener(glia.EVENTS.ENGAGEMENT_START, addClickListener);
+                    });
+
+/*
                     sm.getApi({version: 'v1'}).then(function(salemove) {
             
                         var engagementRequest = salemove.requestEngagement('text');
@@ -60,7 +74,8 @@
                             });
                         };
                         });        
-                    });        
+                    });      
+                    */  
                 </script>            
                 <nav class="d-flex aic">
                     <a href="#" class="login" id="login_btn"><i class="fa fa-user" aria-hidden="true"></i>Login</a>
