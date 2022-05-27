@@ -30,16 +30,19 @@
     <link rel="stylesheet" href="assets/css/responsive.css">
     <script async src="https://api.beta.glia.com/salemove_integration.js"></script>
     <script>
-        var engagementRequest = salemove.requestEngagement('text');
+        sm.getApi({version: 'v1'}).then(function(salemove) {
 
-        engagementRequest.engagementPromise.then(function(engagement) {
-        var enableRecordEvent = function(engagement) {
-            var someButton = document.querySelector('#login_btn');
+            var engagementRequest = salemove.requestEngagement('text');
 
-            someButton.addEventListener('click', function() {
-            engagement.recordEvent({message: 'Record visitor event'});
-            });
-        };
+            engagementRequest.engagementPromise.then(function(engagement) {
+            var enableRecordEvent = function(engagement) {
+                var someButton = document.querySelector('#login_btn');
+
+                someButton.addEventListener('click', function() {
+                engagement.recordEvent({message: 'Record visitor event'});
+                });
+            };
+            });        
         });        
     </script>
 </head>
