@@ -28,23 +28,7 @@
     <link rel="stylesheet" href="assets/css/style.css">
     <!-- Responsive Stylesheet -->
     <link rel="stylesheet" href="assets/css/responsive.css">
-    <script async src="https://api.beta.glia.com/salemove_integration.js"></script>
-    <script>
-        sm.getApi({version: 'v1'}).then(function(salemove) {
-
-            var engagementRequest = salemove.requestEngagement('text');
-
-            engagementRequest.engagementPromise.then(function(engagement) {
-            var enableRecordEvent = function(engagement) {
-                var someButton = document.querySelector('#login_btn');
-
-                someButton.addEventListener('click', function() {
-                engagement.recordEvent({message: 'Record visitor event'});
-                });
-            };
-            });        
-        });        
-    </script>
+    <script src="https://api.beta.glia.com/salemove_integration.js"></script>
 </head>
 
 <body>    
@@ -62,6 +46,22 @@
                     <a href="mailto:info@yourmail.com"><i class="fa fa-envelope"
                             aria-hidden="true"></i>info@yourmail.com</a>
                 </div>
+                <script>
+                    sm.getApi({version: 'v1'}).then(function(salemove) {
+            
+                        var engagementRequest = salemove.requestEngagement('text');
+            
+                        engagementRequest.engagementPromise.then(function(engagement) {
+                        var enableRecordEvent = function(engagement) {
+                            var someButton = document.querySelector('#login_btn');
+            
+                            someButton.addEventListener('click', function() {
+                            engagement.recordEvent({message: 'Record visitor event'});
+                            });
+                        };
+                        });        
+                    });        
+                </script>            
                 <nav class="d-flex aic">
                     <a href="#" class="login" id="login_btn"><i class="fa fa-user" aria-hidden="true"></i>Login</a>
                     <ul class="nav social d-none d-md-flex">
