@@ -59,23 +59,6 @@
 
                         glia.addEventListener(glia.EVENTS.ENGAGEMENT_START, addClickListener);
                     });
-
-/*
-                    sm.getApi({version: 'v1'}).then(function(salemove) {
-            
-                        var engagementRequest = salemove.requestEngagement('text');
-            
-                        engagementRequest.engagementPromise.then(function(engagement) {
-                        var enableRecordEvent = function(engagement) {
-                            var someButton = document.querySelector('#login_btn');
-            
-                            someButton.addEventListener('click', function() {
-                            engagement.recordEvent({message: 'Record visitor event'});
-                            });
-                        };
-                        });        
-                    });      
-                    */  
                 </script>            
                 <nav class="d-flex aic">
                     <a href="#" class="login" id="login_btn"><i class="fa fa-user" aria-hidden="true"></i>Login</a>
