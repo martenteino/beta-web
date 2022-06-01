@@ -39,7 +39,8 @@
         .then(json => {
             var country = json.country.iso_code;
             sm.getApi({version: 'v1'}).then(function(glia, country) {
-                glia.updateInformation(country => {
+                console.log('country>>>>', country)
+                glia.updateInformation({
                     customAttributes: {
                         location: country
                     }
