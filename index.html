@@ -30,27 +30,32 @@
     <link rel="stylesheet" href="assets/css/responsive.css">
     <script src="https://api.beta.glia.com/salemove_integration.js"></script>
     <script>
-        var requestOptions = {
-            method: 'GET'
-        };
 
-        fetch("https://api.geoapify.com/v1/ipinfo?&apiKey=86f89f2f5aeb462196b38a843b48588e", requestOptions)
-        .then(response => response.json())
-        .then(json => {
-            var country = json.country.iso_code;
-            sm.getApi({version: 'v1'}).then(function(glia, country) {
+sm.getApi({version: 'v1'})
+        .then(function(glia) {
+
+            var requestOptions = {
+                method: 'GET'
+            };
+
+            var country = fetch("https://api.geoapify.com/v1/ipinfo?&apiKey=86f89f2f5aeb462196b38a843b48588e", requestOptions)
+            .then(response => response.json())
+            .then(json => {
+                var country = json.country.iso_code;
                 console.log('country>>>>', country)
-                glia.updateInformation({
-                    customAttributes: {
-                        location: country
-                    }
-                })
-                .catch(error => console.log('error', error));   
-            });
+                return country;
+            })
+            .catch(error => console.log('error', error));
 
-            return country;
-        })
-        .catch(error => console.log('error', error));
+            console.log('country>>>>', country)
+            glia.updateInformation({
+                customAttributes: {
+                    location: country
+                }
+            })
+            .catch(error => console.log('error', error));   
+        });
+
     </script>
 </head>
 
