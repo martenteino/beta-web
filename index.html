@@ -36,11 +36,6 @@
 
         fetch("https://api.geoapify.com/v1/ipinfo?&apiKey=86f89f2f5aeb462196b38a843b48588e", requestOptions)
         .then(response => response.json())
-        .then(result => console.log(result))
-        .catch(error => console.log('error', error));
-
-        fetch("https://api.geoapify.com/v1/ipinfo?&apiKey=86f89f2f5aeb462196b38a843b48588e", requestOptions)
-        .then(response => response.json())
         .then(json => {
             var country = json.country.iso_code;
             if (country == 'EE') {
