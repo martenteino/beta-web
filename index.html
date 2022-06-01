@@ -42,23 +42,17 @@
         fetch("https://api.geoapify.com/v1/ipinfo?&apiKey=86f89f2f5aeb462196b38a843b48588e", requestOptions)
         .then(response => response.json())
         .then(json => {
-            console.log('json >>> ' + json)
             var country = json.country.iso_code;
-            console.log('Country >>> ' + country)
-
-            /*
-            sm.getApi({version: 'v1'})
-            .then(function(glia) {
-                glia.updateInformation({
-                    customAttributes: {
-                        product: 'home-insurance'
-                    }
-                })
-            .catch(error => console.log('error', error));
-            
-            });
-            */
-
+            if (country == 'EE') {
+                sm.getApi({version: 'v1'}).then(function(glia, country) {
+                    glia.updateInformation({
+                        customAttributes: {
+                            queue: 'all_media'
+                        }
+                    })
+                    .catch(error => console.log('error', error));   
+                });
+            }
             return country;
         })
         .catch(error => console.log('error', error));
