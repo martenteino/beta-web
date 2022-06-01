@@ -40,7 +40,7 @@
         .catch(error => console.log('error', error));
 
         fetch("https://api.geoapify.com/v1/ipinfo?&apiKey=86f89f2f5aeb462196b38a843b48588e", requestOptions)
-        .then(result => {
+        .then(response => {
             var json = response.json();
             var country = json.country.iso_code;
             console.log('Country >>> ' + country)
