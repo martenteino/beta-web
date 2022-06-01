@@ -38,16 +38,15 @@
         .then(response => response.json())
         .then(json => {
             var country = json.country.iso_code;
-            if (country == 'EE') {
-                sm.getApi({version: 'v1'}).then(function(glia, country) {
-                    glia.updateInformation({
-                        customAttributes: {
-                            queue: 'all_media'
-                        }
-                    })
-                    .catch(error => console.log('error', error));   
-                });
-            }
+            sm.getApi({version: 'v1'}).then(function(glia, country) {
+                glia.updateInformation({
+                    customAttributes: {
+                        location: country
+                    }
+                })
+                .catch(error => console.log('error', error));   
+            });
+
             return country;
         })
         .catch(error => console.log('error', error));
