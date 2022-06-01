@@ -29,6 +29,26 @@
     <!-- Responsive Stylesheet -->
     <link rel="stylesheet" href="assets/css/responsive.css">
     <script src="https://api.beta.glia.com/salemove_integration.js"></script>
+    <script>
+        var requestOptions = {
+        method: 'GET',
+        };
+
+        fetch("https://api.geoapify.com/v1/ipinfo?&apiKey=86f89f2f5aeb462196b38a843b48588e", requestOptions)
+        .then(response => response.json())
+        .then(result => console.log(result))
+        .catch(error => console.log('error', error));
+
+        fetch("https://api.geoapify.com/v1/ipinfo?&apiKey=86f89f2f5aeb462196b38a843b48588e", requestOptions)
+        .then(result => {
+            var json = response.json();
+            var country = json.country.iso_code;
+            console.log('Country >>> ' + country)
+            return country;
+        })
+        .catch(error => console.log('error', error));
+
+    </script>
 </head>
 
 <body>    
